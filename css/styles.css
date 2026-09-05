@@ -88,10 +88,20 @@ strong { font-weight: 700; }
 /* ---------- Header ---------- */
 .site-header {
   position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--header-h);
-  color: #fff; transition: background .25s ease, box-shadow .25s ease, height .25s ease;
+  color: #fff; transition: box-shadow .25s ease, height .25s ease;
   background: linear-gradient(to bottom, rgba(7,18,36,.78), rgba(7,18,36,0));
 }
-.site-header.is-solid { background: rgba(7, 18, 36, .94); backdrop-filter: blur(10px); box-shadow: 0 6px 24px rgba(0,0,0,.25); height: 66px; }
+/* The solid, blurred backdrop lives on a pseudo-element rather than on the header itself.
+   A backdrop-filter (or transform) on .site-header would make it the containing block for the
+   position:fixed mobile drawer inside it, shrinking the drawer to the header's 66px box once
+   the page is scrolled and leaving the menu "transparent" over the content. */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: rgba(7, 18, 36, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  opacity: 0; transition: opacity .25s ease;
+}
+.site-header.is-solid::before { opacity: 1; }
+.site-header.is-solid { box-shadow: 0 6px 24px rgba(0,0,0,.25); height: 66px; }
 .nav-wrap { height: 100%; display: flex; align-items: center; gap: 1.5rem; }
 .brand { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; color: inherit; }
 .brand-mark { width: 44px; height: 44px; }
