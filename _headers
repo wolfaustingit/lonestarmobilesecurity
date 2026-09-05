@@ -11,10 +11,10 @@
   Cache-Control: public, max-age=604800
 
 /css/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=300, must-revalidate
 
 /js/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=300, must-revalidate
 
 /marketing-kit/*
   X-Robots-Tag: noindex, nofollow

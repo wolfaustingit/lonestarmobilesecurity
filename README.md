@@ -69,6 +69,8 @@ pricing: { tower: 750, monitoring: 150 },   // updates every price on the page
 To receive mail at `info@lonestarmobilesecurity.com` for free, enable **Email → Email Routing** on the zone in Cloudflare and forward the address to your inbox.
 
 ## 5. Editing content
+> **Cache note:** browsers keep `css/` and `js/` files for up to 5 minutes. If you need a change to show up instantly for someone who has visited recently, bump the `?v=` value on the `<link>`/`<script>` tags in `index.html` and `404.html`.
+
 
 All copy lives in `index.html`. Sections are marked with comments (`<!-- ===== PRICING ===== -->`). Prices are injected from `config.js` wherever you see `data-price="tower"` or `data-price="monitoring"`, so you only change them in one place.
 

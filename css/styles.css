@@ -128,7 +128,7 @@ strong { font-weight: 700; }
   .nav-phone { display: none; }
   .nav-toggle { display: flex; }
   .site-nav {
-    position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 85vw);
+    position: fixed; top: 0; right: 0; height: 100vh; height: 100dvh; width: min(320px, 85vw);
     background: var(--navy-900); flex-direction: column; align-items: flex-start; gap: 0;
     padding: calc(var(--header-h) + 1rem) 1.6rem 2rem; transform: translateX(100%); transition: transform .28s ease; box-shadow: var(--shadow-lg);
   }
